@@ -29,11 +29,11 @@
         },
         "sort_by": {
             "title": "Sort By",
-            "type": "integer",
+            "type": "string",
             "description": "Sort order for shopping results.",
             "editor": "select",
             "nullable": true,
-            "enum": [0, 1, 2],
+            "enum": ["0", "1", "2"],
             "enumTitles": [
                 "Relevance (default)",
                 "Price: Low to High",
