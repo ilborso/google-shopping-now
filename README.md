@@ -44,15 +44,6 @@ Perfect for price monitoring, competitor analysis, product research, e-commerce 
 | Search in Italy, Italian language | `{"query": "smartphone", "hl": "it", "gl": "it", "google_domain": "google.it"}` |
 | Premium monitors, $500–$1500 | `{"query": "monitor 4k", "min_price": 500, "max_price": 1500}` |
 
-## Environment Variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `SCRAPE_DO_TOKEN` | **Yes** | Your Scrape.do API token |
-| `SCRAPE_DO_API_KEY` | Alternative | Alternative name for the same token |
-
-Set the token in the Actor's **Environment Variables** settings on the Apify platform.
-
 ## Example Input
 
 ```json
