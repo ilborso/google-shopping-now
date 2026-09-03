@@ -227,7 +227,53 @@ async def main() -> None:
             # Log a sample product for debugging
             Actor.log.info(f"Sample product (first result): {shopping_results[0]}")
 
-        # ── 6. Apply max_results limit ──────────────────────────────
+        # ── 6. Client-side filtering (fallback if API ignores filters) ──
+        pre_filter_count = len(shopping_results)
+
+        if min_price is not None and shopping_results:
+            shopping_results = [
+                p for p in shopping_results
+                if p.get("extracted_price") is not None
+                and p["extracted_price"] >= min_price
+            ]
+            Actor.log.info(
+                f"After min_price filter ({min_price}): "
+                f"{len(shopping_results)} products (was {pre_filter_count})"
+            )
+
+        if max_price is not None and shopping_results:
+            before = len(shopping_results)
+            shopping_results = [
+                p for p in shopping_results
+                if p.get("extracted_price") is not None
+                and p["extracted_price"] <= max_price
+            ]
+            Actor.log.info(
+                f"After max_price filter ({max_price}): "
+                f"{len(shopping_results)} products (was {before})"
+            )
+
+        if sort_by is not None and shopping_results:
+            sort_by_int = int(sort_by)
+            if sort_by_int == 1:
+                shopping_results.sort(
+                    key=lambda p: p.get("extracted_price") or float("inf")
+                )
+                Actor.log.info("Applied client-side sort: price low → high")
+            elif sort_by_int == 2:
+                shopping_results.sort(
+                    key=lambda p: p.get("extracted_price") or 0,
+                    reverse=True,
+                )
+                Actor.log.info("Applied client-side sort: price high → low")
+
+        if pre_filter_count != len(shopping_results):
+            Actor.log.info(
+                f"Client-side filtering reduced results from "
+                f"{pre_filter_count} to {len(shopping_results)}"
+            )
+
+        # ── 7. Apply max_results limit ──────────────────────────────
         if max_results is not None and len(shopping_results) > max_results:
             Actor.log.info(
                 f"Step 6: Limiting results to max_results={max_results} "
