@@ -1,0 +1,112 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "shopping_overview": {
+            "title": "Shopping Results",
+            "transformation": {
+                "fields": ["title", "price", "extracted_price", "source", "rating", "reviews", "link", "thumbnail"]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "title": {
+                        "label": "Product Title",
+                        "format": "text"
+                    },
+                    "price": {
+                        "label": "Price",
+                        "format": "text"
+                    },
+                    "extracted_price": {
+                        "label": "Price (numeric)",
+                        "format": "number"
+                    },
+                    "source": {
+                        "label": "Seller",
+                        "format": "text"
+                    },
+                    "rating": {
+                        "label": "Rating",
+                        "format": "number"
+                    },
+                    "reviews": {
+                        "label": "Reviews",
+                        "format": "number"
+                    },
+                    "link": {
+                        "label": "Product Link",
+                        "format": "link"
+                    },
+                    "thumbnail": {
+                        "label": "Thumbnail",
+                        "format": "image"
+                    }
+                }
+            }
+        },
+        "shopping_details": {
+            "title": "Full Product Details",
+            "transformation": {
+                "fields": ["title", "price", "extracted_price", "old_price", "extracted_old_price", "source", "rating", "reviews", "delivery", "badge", "link", "product_id", "position"]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "title": {
+                        "label": "Product Title",
+                        "format": "text"
+                    },
+                    "price": {
+                        "label": "Price",
+                        "format": "text"
+                    },
+                    "extracted_price": {
+                        "label": "Price (numeric)",
+                        "format": "number"
+                    },
+                    "old_price": {
+                        "label": "Old Price",
+                        "format": "text"
+                    },
+                    "extracted_old_price": {
+                        "label": "Old Price (numeric)",
+                        "format": "number"
+                    },
+                    "source": {
+                        "label": "Seller",
+                        "format": "text"
+                    },
+                    "rating": {
+                        "label": "Rating",
+                        "format": "number"
+                    },
+                    "reviews": {
+                        "label": "Reviews",
+                        "format": "number"
+                    },
+                    "delivery": {
+                        "label": "Delivery",
+                        "format": "text"
+                    },
+                    "badge": {
+                        "label": "Badge",
+                        "format": "text"
+                    },
+                    "link": {
+                        "label": "Product Link",
+                        "format": "link"
+                    },
+                    "product_id": {
+                        "label": "Product ID",
+                        "format": "text"
+                    },
+                    "position": {
+                        "label": "Position",
+                        "format": "number"
+                    }
+                }
+            }
+        }
+    }
+}

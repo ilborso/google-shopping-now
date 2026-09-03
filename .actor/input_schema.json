@@ -1,0 +1,179 @@
+{
+    "title": "Google Shopping Now Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "required": ["query"],
+    "properties": {
+        "query": {
+            "title": "Search Query",
+            "sectionCaption": "Search",
+            "type": "string",
+            "description": "The search query for Google Shopping (e.g. 'laptop', 'wireless headphones'). URL-encoding is handled automatically.",
+            "editor": "textfield",
+            "prefill": "laptop"
+        },
+        "min_price": {
+            "title": "Minimum Price",
+            "sectionCaption": "Price & Filters",
+            "type": "integer",
+            "description": "Filter results by minimum price (in the currency of the target country). Leave empty for no minimum.",
+            "editor": "number",
+            "nullable": true
+        },
+        "max_price": {
+            "title": "Maximum Price",
+            "type": "integer",
+            "description": "Filter results by maximum price (in the currency of the target country). Leave empty for no maximum.",
+            "editor": "number",
+            "nullable": true
+        },
+        "sort_by": {
+            "title": "Sort By",
+            "type": "integer",
+            "description": "Sort order for shopping results.",
+            "editor": "select",
+            "nullable": true,
+            "enum": [0, 1, 2],
+            "enumTitles": [
+                "Relevance (default)",
+                "Price: Low to High",
+                "Price: High to Low"
+            ]
+        },
+        "free_shipping": {
+            "title": "Free Shipping Only",
+            "type": "boolean",
+            "description": "If enabled, only show products with free shipping.",
+            "default": false,
+            "editor": "checkbox"
+        },
+        "on_sale": {
+            "title": "On Sale Only",
+            "type": "boolean",
+            "description": "If enabled, only show products that are currently on sale.",
+            "default": false,
+            "editor": "checkbox"
+        },
+        "max_results": {
+            "title": "Max Results",
+            "sectionCaption": "Output",
+            "type": "integer",
+            "description": "Maximum number of product results to return. Leave empty to return all available results.",
+            "editor": "number",
+            "nullable": true
+        },
+        "hl": {
+            "title": "Language",
+            "sectionCaption": "Localization",
+            "type": "string",
+            "description": "Host language for the Google Shopping results.",
+            "editor": "select",
+            "default": "en",
+            "prefill": "en",
+            "enum": [
+                "ar", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es",
+                "et", "fa", "fi", "fr", "gu", "he", "hi", "hr", "hu", "id",
+                "it", "ja", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "nb",
+                "nl", "no", "pl", "pt", "ro", "ru", "sk", "sl", "sr", "sv",
+                "sw", "ta", "te", "th", "tr", "uk", "ur", "vi", "zh"
+            ],
+            "enumTitles": [
+                "Arabic (ar)", "Bulgarian (bg)", "Bengali (bn)", "Catalan (ca)",
+                "Czech (cs)", "Danish (da)", "German (de)", "Greek (el)",
+                "English (en)", "Spanish (es)", "Estonian (et)", "Persian (fa)",
+                "Finnish (fi)", "French (fr)", "Gujarati (gu)", "Hebrew (he)",
+                "Hindi (hi)", "Croatian (hr)", "Hungarian (hu)", "Indonesian (id)",
+                "Italian (it)", "Japanese (ja)", "Kannada (kn)", "Korean (ko)",
+                "Lithuanian (lt)", "Latvian (lv)", "Malayalam (ml)", "Marathi (mr)",
+                "Malay (ms)", "Norwegian Bokmål (nb)", "Dutch (nl)", "Norwegian (no)",
+                "Polish (pl)", "Portuguese (pt)", "Romanian (ro)", "Russian (ru)",
+                "Slovak (sk)", "Slovenian (sl)", "Serbian (sr)", "Swedish (sv)",
+                "Swahili (sw)", "Tamil (ta)", "Telugu (te)", "Thai (th)",
+                "Turkish (tr)", "Ukrainian (uk)", "Urdu (ur)", "Vietnamese (vi)",
+                "Chinese (zh)"
+            ]
+        },
+        "gl": {
+            "title": "Country",
+            "type": "string",
+            "description": "Country perspective for Google Shopping results (ISO 3166-1 alpha-2 code).",
+            "editor": "select",
+            "default": "us",
+            "prefill": "us",
+            "enum": [
+                "ar", "au", "at", "be", "br", "ca", "cl", "co", "cz", "dk",
+                "eg", "fi", "fr", "de", "gr", "hk", "hu", "in", "id", "ie",
+                "il", "it", "jp", "ke", "my", "mx", "nl", "nz", "ng", "no",
+                "pk", "pe", "ph", "pl", "pt", "ro", "ru", "sa", "sg", "za",
+                "kr", "es", "se", "ch", "tw", "th", "tr", "ua", "ae", "gb",
+                "us", "vn"
+            ],
+            "enumTitles": [
+                "Argentina (ar)", "Australia (au)", "Austria (at)", "Belgium (be)",
+                "Brazil (br)", "Canada (ca)", "Chile (cl)", "Colombia (co)",
+                "Czech Republic (cz)", "Denmark (dk)", "Egypt (eg)", "Finland (fi)",
+                "France (fr)", "Germany (de)", "Greece (gr)", "Hong Kong (hk)",
+                "Hungary (hu)", "India (in)", "Indonesia (id)", "Ireland (ie)",
+                "Israel (il)", "Italy (it)", "Japan (jp)", "Kenya (ke)",
+                "Malaysia (my)", "Mexico (mx)", "Netherlands (nl)", "New Zealand (nz)",
+                "Nigeria (ng)", "Norway (no)", "Pakistan (pk)", "Peru (pe)",
+                "Philippines (ph)", "Poland (pl)", "Portugal (pt)", "Romania (ro)",
+                "Russia (ru)", "Saudi Arabia (sa)", "Singapore (sg)", "South Africa (za)",
+                "South Korea (kr)", "Spain (es)", "Sweden (se)", "Switzerland (ch)",
+                "Taiwan (tw)", "Thailand (th)", "Turkey (tr)", "Ukraine (ua)",
+                "United Arab Emirates (ae)", "United Kingdom (gb)", "United States (us)",
+                "Vietnam (vn)"
+            ]
+        },
+        "google_domain": {
+            "title": "Google Domain",
+            "type": "string",
+            "description": "The Google domain to use for the search query.",
+            "editor": "select",
+            "default": "google.com",
+            "prefill": "google.com",
+            "enum": [
+                "google.com", "google.co.uk", "google.ca", "google.com.au",
+                "google.de", "google.fr", "google.it", "google.es",
+                "google.co.jp", "google.co.kr", "google.com.br", "google.com.mx",
+                "google.co.in", "google.ru", "google.nl", "google.be",
+                "google.ch", "google.at", "google.se", "google.no",
+                "google.dk", "google.fi", "google.pl", "google.pt",
+                "google.co.za", "google.com.tr", "google.com.eg",
+                "google.com.sa", "google.ae", "google.co.id",
+                "google.com.my", "google.com.sg", "google.com.ph",
+                "google.co.th", "google.com.vn", "google.com.tw",
+                "google.com.hk", "google.co.nz", "google.com.ar",
+                "google.cl", "google.com.co", "google.com.pe",
+                "google.co.il", "google.ie", "google.gr", "google.hu",
+                "google.cz", "google.ro", "google.com.ua", "google.co.ke",
+                "google.com.ng", "google.com.pk"
+            ],
+            "enumTitles": [
+                "google.com (US)", "google.co.uk (UK)", "google.ca (Canada)",
+                "google.com.au (Australia)", "google.de (Germany)", "google.fr (France)",
+                "google.it (Italy)", "google.es (Spain)", "google.co.jp (Japan)",
+                "google.co.kr (South Korea)", "google.com.br (Brazil)",
+                "google.com.mx (Mexico)", "google.co.in (India)", "google.ru (Russia)",
+                "google.nl (Netherlands)", "google.be (Belgium)",
+                "google.ch (Switzerland)", "google.at (Austria)",
+                "google.se (Sweden)", "google.no (Norway)", "google.dk (Denmark)",
+                "google.fi (Finland)", "google.pl (Poland)", "google.pt (Portugal)",
+                "google.co.za (South Africa)", "google.com.tr (Turkey)",
+                "google.com.eg (Egypt)", "google.com.sa (Saudi Arabia)",
+                "google.ae (UAE)", "google.co.id (Indonesia)",
+                "google.com.my (Malaysia)", "google.com.sg (Singapore)",
+                "google.com.ph (Philippines)", "google.co.th (Thailand)",
+                "google.com.vn (Vietnam)", "google.com.tw (Taiwan)",
+                "google.com.hk (Hong Kong)", "google.co.nz (New Zealand)",
+                "google.com.ar (Argentina)", "google.cl (Chile)",
+                "google.com.co (Colombia)", "google.com.pe (Peru)",
+                "google.co.il (Israel)", "google.ie (Ireland)",
+                "google.gr (Greece)", "google.hu (Hungary)",
+                "google.cz (Czech Republic)", "google.ro (Romania)",
+                "google.com.ua (Ukraine)", "google.co.ke (Kenya)",
+                "google.com.ng (Nigeria)", "google.com.pk (Pakistan)"
+            ]
+        }
+    }
+}
