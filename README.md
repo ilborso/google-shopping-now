@@ -1,14 +1,13 @@
 # Google Shopping Now
 
-An Apify Actor that fetches Google Shopping search results and saves each product as an individual record in an Apify Dataset.
+An Apify Actor that fetches Google Shopping search results and saves each product as an individual record in an Apify Dataset. Extract product details, prices, reviews, and seller info from Amazon, Walmart, eBay, and local e-shops using only a product or category URL. Built for price tracking, market research, and product comparison engines.
 
 ## What does this Actor do?
 
 This Actor:
 1. Accepts a search query and optional filters (price range, sorting, shipping, sale, localization)
 2. Extracts only the shopping results without ads. It pushes each product as a flat record to the Apify Dataset
-
-Perfect for price monitoring, competitor analysis, product research, e-commerce intelligence, and market comparisons.
+3. Perfect for price monitoring, competitor analysis, product research, e-commerce intelligence, and market comparisons.
 
 ## Why use Google Shopping Now?
 
