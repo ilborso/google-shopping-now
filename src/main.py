@@ -292,12 +292,13 @@ async def main() -> None:
                 f"(from {len(shopping_results)})"
             )
             shopping_results = shopping_results[:max_results]
-        else:
-            Actor.log.info(f"Step 6: No limit applied — returning all {len(shopping_results)} results")
+        # ── 8. Reassign position sequentially (1 to N) ──────────────
+        for idx, product in enumerate(shopping_results, start=1):
+            product["position"] = idx
 
-        # ── 7. Push to Dataset (flat records only) ──────────────────
+        # ── 9. Push to Dataset (flat records only) ──────────────────
         if shopping_results:
-            Actor.log.info(f"Step 7: Pushing {len(shopping_results)} product records to Dataset...")
+            Actor.log.info(f"Step 9: Pushing {len(shopping_results)} product records to Dataset...")
             try:
                 await Actor.push_data(shopping_results)
                 Actor.log.info(f"Successfully pushed {len(shopping_results)} records to Dataset")
