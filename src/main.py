@@ -253,7 +253,7 @@ async def main() -> None:
                 f"{len(shopping_results)} products (was {before})"
             )
 
-        if sort_by is not None and shopping_results:
+        if sort_by is not None and int(sort_by) in (1, 2):
             sort_by_int = int(sort_by)
             if sort_by_int == 1:
                 shopping_results.sort(
@@ -266,6 +266,18 @@ async def main() -> None:
                     reverse=True,
                 )
                 Actor.log.info("Applied client-side sort: price high → low")
+        elif shopping_results:
+            def _get_position_key(p: Dict[str, Any]) -> float:
+                pos = p.get("position")
+                if pos is None:
+                    return float("inf")
+                try:
+                    return float(pos)
+                except (ValueError, TypeError):
+                    return float("inf")
+
+            shopping_results.sort(key=_get_position_key)
+            Actor.log.info("Applied client-side sort: position low → high (ascending)")
 
         if pre_filter_count != len(shopping_results):
             Actor.log.info(

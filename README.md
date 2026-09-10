@@ -60,7 +60,7 @@ This Actor:
 
 ## Output
 
-Each product from the `shopping_results` array is pushed as an individual flat record to the Apify Dataset. No root objects, no `search_parameters`, no `ads`, no `filters`.
+Each product from the `shopping_results` array is pushed as an individual flat record to the Apify Dataset.
 
 ```json
 [

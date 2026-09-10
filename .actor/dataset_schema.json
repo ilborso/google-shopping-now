@@ -1,15 +1,128 @@
 {
     "actorSpecification": 1,
-    "fields": {},
+    "fields": {
+        "type": "object",
+        "properties": {
+            "position": {
+                "type": ["integer", "null"],
+                "description": "1-based position in the results list."
+            },
+            "title": {
+                "type": ["string", "null"],
+                "description": "Product title."
+            },
+            "product_id": {
+                "type": ["string", "null"],
+                "description": "Google product catalog ID or offer-specific identifier."
+            },
+            "catalog_id": {
+                "type": ["string", "null"],
+                "description": "Durable Google catalog identifier."
+            },
+            "product_link": {
+                "type": ["string", "null"],
+                "description": "Direct link to the Google Shopping product page."
+            },
+            "link": {
+                "type": ["string", "null"],
+                "description": "Alternative product or offer URL."
+            },
+            "source": {
+                "type": ["string", "null"],
+                "description": "Retailer name (e.g. Best Buy, Amazon, Walmart)."
+            },
+            "source_icon": {
+                "type": ["string", "null"],
+                "description": "Retailer favicon as base64 data URI or URL."
+            },
+            "price": {
+                "type": ["string", "null"],
+                "description": "Formatted price string."
+            },
+            "extracted_price": {
+                "type": ["number", "null"],
+                "description": "Numeric price value."
+            },
+            "old_price": {
+                "type": ["string", "null"],
+                "description": "Original price before discount."
+            },
+            "extracted_old_price": {
+                "type": ["number", "null"],
+                "description": "Numeric original price before discount."
+            },
+            "rating": {
+                "type": ["number", "null"],
+                "description": "Product rating out of 5."
+            },
+            "reviews": {
+                "type": ["integer", "null"],
+                "description": "Total number of user reviews."
+            },
+            "snippet": {
+                "type": ["string", "null"],
+                "description": "Summary from user reviews."
+            },
+            "extensions": {
+                "type": ["array", "null"],
+                "items": {
+                    "type": "string"
+                },
+                "description": "Badges, promotional metadata, and extension tags."
+            },
+            "thumbnail": {
+                "type": ["string", "null"],
+                "description": "Product image thumbnail as base64 data URI or URL."
+            },
+            "delivery": {
+                "type": ["string", "null"],
+                "description": "Delivery, shipping info, or return policy."
+            },
+            "tag": {
+                "type": ["string", "null"],
+                "description": "Discount or promotional badge."
+            },
+            "badge": {
+                "type": ["string", "null"],
+                "description": "Alternative promotional badge text."
+            },
+            "second_hand_condition": {
+                "type": ["string", "null"],
+                "description": "Condition for used items (e.g. Refurbished, Used, Renewed)."
+            },
+            "multiple_sources": {
+                "type": ["boolean", "null"],
+                "description": "True when the product is sold by multiple retailers."
+            },
+            "immersive_product_page_token": {
+                "type": ["string", "null"],
+                "description": "Base64 token for the immersive product page viewer."
+            }
+        }
+    },
     "views": {
         "shopping_overview": {
             "title": "Shopping Results",
             "transformation": {
-                "fields": ["title", "price", "extracted_price", "source", "rating", "reviews", "link", "thumbnail"]
+                "fields": [
+                    "position",
+                    "title",
+                    "price",
+                    "extracted_price",
+                    "source",
+                    "rating",
+                    "reviews",
+                    "product_link",
+                    "thumbnail"
+                ]
             },
             "display": {
                 "component": "table",
                 "properties": {
+                    "position": {
+                        "label": "Position",
+                        "format": "number"
+                    },
                     "title": {
                         "label": "Product Title",
                         "format": "text"
@@ -34,7 +147,7 @@
                         "label": "Reviews",
                         "format": "number"
                     },
-                    "link": {
+                    "product_link": {
                         "label": "Product Link",
                         "format": "link"
                     },
@@ -48,11 +161,39 @@
         "shopping_details": {
             "title": "Full Product Details",
             "transformation": {
-                "fields": ["title", "price", "extracted_price", "old_price", "extracted_old_price", "source", "rating", "reviews", "delivery", "badge", "link", "product_id", "position"]
+                "fields": [
+                    "position",
+                    "title",
+                    "price",
+                    "extracted_price",
+                    "old_price",
+                    "extracted_old_price",
+                    "source",
+                    "source_icon",
+                    "rating",
+                    "reviews",
+                    "snippet",
+                    "extensions",
+                    "delivery",
+                    "tag",
+                    "badge",
+                    "second_hand_condition",
+                    "multiple_sources",
+                    "product_link",
+                    "link",
+                    "product_id",
+                    "catalog_id",
+                    "thumbnail",
+                    "immersive_product_page_token"
+                ]
             },
             "display": {
                 "component": "table",
                 "properties": {
+                    "position": {
+                        "label": "Position",
+                        "format": "number"
+                    },
                     "title": {
                         "label": "Product Title",
                         "format": "text"
@@ -77,6 +218,10 @@
                         "label": "Seller",
                         "format": "text"
                     },
+                    "source_icon": {
+                        "label": "Seller Icon",
+                        "format": "image"
+                    },
                     "rating": {
                         "label": "Rating",
                         "format": "number"
@@ -85,25 +230,57 @@
                         "label": "Reviews",
                         "format": "number"
                     },
+                    "snippet": {
+                        "label": "Snippet",
+                        "format": "text"
+                    },
+                    "extensions": {
+                        "label": "Extensions",
+                        "format": "text"
+                    },
                     "delivery": {
                         "label": "Delivery",
+                        "format": "text"
+                    },
+                    "tag": {
+                        "label": "Tag",
                         "format": "text"
                     },
                     "badge": {
                         "label": "Badge",
                         "format": "text"
                     },
-                    "link": {
+                    "second_hand_condition": {
+                        "label": "Condition",
+                        "format": "text"
+                    },
+                    "multiple_sources": {
+                        "label": "Multiple Sources",
+                        "format": "text"
+                    },
+                    "product_link": {
                         "label": "Product Link",
+                        "format": "link"
+                    },
+                    "link": {
+                        "label": "Link",
                         "format": "link"
                     },
                     "product_id": {
                         "label": "Product ID",
                         "format": "text"
                     },
-                    "position": {
-                        "label": "Position",
-                        "format": "number"
+                    "catalog_id": {
+                        "label": "Catalog ID",
+                        "format": "text"
+                    },
+                    "thumbnail": {
+                        "label": "Thumbnail",
+                        "format": "image"
+                    },
+                    "immersive_product_page_token": {
+                        "label": "Immersive Token",
+                        "format": "text"
                     }
                 }
             }
