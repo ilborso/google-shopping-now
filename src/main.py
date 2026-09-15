@@ -17,7 +17,7 @@ from apify import Actor
 API_URL = "https://api.scrape.do/plugin/google/shopping"
 
 # Request configuration
-REQUEST_TIMEOUT = 60  # seconds – Shopping queries can be slower
+REQUEST_TIMEOUT = 300  # seconds – Shopping queries can be slower
 
 
 async def main() -> None:
@@ -120,7 +120,7 @@ async def main() -> None:
         Actor.log.info(f"Query parameters (token hidden): {safe_params}")
 
         # ── 4. Make the API request ─────────────────────────────────
-        Actor.log.info(f"Step 4: Sending GET request to {API_URL} (timeout={REQUEST_TIMEOUT}s)...")
+        Actor.log.info(f"Step 4: Sending GET request (timeout={REQUEST_TIMEOUT}s)...")
 
         try:
             async with httpx.AsyncClient() as client:

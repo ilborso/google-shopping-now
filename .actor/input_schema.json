@@ -12,7 +12,7 @@
             "type": "string",
             "description": "The search query for Google Shopping (e.g. 'laptop', 'wireless headphones'). URL-encoding is handled automatically.",
             "editor": "textfield",
-            "prefill": "laptop"
+            "prefill": "ezviz+telecamera+esterno"
         },
         "min_price": {
             "title": "Minimum Price",
@@ -75,7 +75,7 @@
             "description": "Host language for the Google Shopping results.",
             "editor": "select",
             "default": "en",
-            "prefill": "en",
+            "prefill": "it",
             "enum": [
                 "aa",
                 "ab",
@@ -365,7 +365,7 @@
             "description": "Country perspective for Google Shopping results.",
             "editor": "select",
             "default": "us",
-            "prefill": "us",
+            "prefill": "it",
             "enum": [
                 "ad",
                 "ae",
@@ -875,7 +875,7 @@
             "description": "The Google domain to use for the search query.",
             "editor": "select",
             "default": "google.com",
-            "prefill": "google.com",
+            "prefill": "google.it",
             "enum": [
                 "google.com",
                 "google.co.uk",
